@@ -21,6 +21,8 @@ install -D -m 0644 "$HERE/io.github.chargeguard.svg" \
   "$STAGE/usr/share/icons/hicolor/scalable/apps/io.github.chargeguard.svg"
 install -D -m 0644 "$HERE/README.md" \
   "$STAGE/usr/share/doc/charge-guard/README.md"
+install -D -m 0644 "$HERE/COMPATIBILITY.md" \
+  "$STAGE/usr/share/doc/charge-guard/COMPATIBILITY.md"
 
 SIZE=$(du -ks "$STAGE" | cut -f1)
 

@@ -4,7 +4,9 @@ A small GTK4 app for Ubuntu. It stops the battery charge, so the laptop runs
 from the adapter.
 
 Written for a Lenovo IdeaPad Slim 3 15IRH8 on Ubuntu 24.04, kernel 7.0. It
-works on any IdeaPad whose kernel driver shows `conservation_mode`.
+works on any IdeaPad whose kernel driver shows `conservation_mode`. See
+[COMPATIBILITY.md](COMPATIBILITY.md) for the models, the one-line check, and
+what happens on other laptops.
 
 ## What the hardware allows
 
