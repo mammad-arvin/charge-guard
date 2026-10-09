@@ -1,0 +1,17 @@
+#!/bin/sh
+# Root helper. Sets ideapad conservation mode. Called through pkexec.
+set -eu
+
+case "${1:-}" in
+  on)  VALUE=1 ;;
+  off) VALUE=0 ;;
+  *)   echo "usage: charge-guard-helper on|off" >&2; exit 2 ;;
+esac
+
+TARGET=$(ls -d /sys/bus/platform/drivers/ideapad_acpi/*/conservation_mode 2>/dev/null | head -n1)
+if [ -z "$TARGET" ]; then
+  echo "conservation_mode not found" >&2
+  exit 1
+fi
+
+printf '%s' "$VALUE" > "$TARGET"

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Charge Guard
+GenericName=Battery Charge Control
+Comment=Stop charging and run the laptop from the adapter
+Exec=charge-guard
+Icon=io.github.chargeguard
+Terminal=false
+Categories=System;Settings;HardwareSettings;
+Keywords=battery;charge;power;conservation;adapter;
+StartupNotify=true
