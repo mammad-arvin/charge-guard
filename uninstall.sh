@@ -12,6 +12,7 @@ rm -f /usr/local/bin/charge-guard \
       /usr/share/polkit-1/actions/io.github.chargeguard.policy \
       /usr/share/applications/io.github.chargeguard.desktop \
       /usr/share/icons/hicolor/scalable/apps/io.github.chargeguard.svg
+rm -rf /usr/share/gnome-shell/extensions/charge-guard@io.github.chargeguard
 
 update-desktop-database /usr/share/applications 2>/dev/null || true
 gtk-update-icon-cache -qtf /usr/share/icons/hicolor 2>/dev/null || true

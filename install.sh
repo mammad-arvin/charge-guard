@@ -19,7 +19,16 @@ install -D -m 0644 "$HERE/io.github.chargeguard.desktop" \
 install -D -m 0644 "$HERE/io.github.chargeguard.svg" \
   /usr/share/icons/hicolor/scalable/apps/io.github.chargeguard.svg
 
+UUID=charge-guard@io.github.chargeguard
+EXT=/usr/share/gnome-shell/extensions/$UUID
+install -D -m 0644 "$HERE/gnome-extension/metadata.json"  "$EXT/metadata.json"
+install -D -m 0644 "$HERE/gnome-extension/extension.js"   "$EXT/extension.js"
+install -D -m 0644 "$HERE/gnome-extension/stylesheet.css" "$EXT/stylesheet.css"
+install -D -m 0644 "$HERE/gnome-extension/icons/io.github.chargeguard-symbolic.svg" \
+  "$EXT/icons/io.github.chargeguard-symbolic.svg"
+
 update-desktop-database /usr/share/applications 2>/dev/null || true
 gtk-update-icon-cache -qtf /usr/share/icons/hicolor 2>/dev/null || true
 
 echo "Done. Charge Guard is in your app menu."
+echo "For the top bar switch, see EXTENSION.md."

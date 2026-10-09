@@ -2,7 +2,8 @@
 # Builds dist/charge-guard_<version>_all.deb from this working tree.
 set -eu
 
-VERSION=1.0.0
+VERSION=1.1.0
+UUID=charge-guard@io.github.chargeguard
 HERE=$(cd "$(dirname "$0")/.." && pwd)
 STAGE=$(mktemp -d)
 trap 'rm -rf "$STAGE"' EXIT
@@ -19,10 +20,19 @@ install -D -m 0644 "$HERE/io.github.chargeguard.desktop" \
   "$STAGE/usr/share/applications/io.github.chargeguard.desktop"
 install -D -m 0644 "$HERE/io.github.chargeguard.svg" \
   "$STAGE/usr/share/icons/hicolor/scalable/apps/io.github.chargeguard.svg"
+EXT="$STAGE/usr/share/gnome-shell/extensions/$UUID"
+install -D -m 0644 "$HERE/gnome-extension/metadata.json"   "$EXT/metadata.json"
+install -D -m 0644 "$HERE/gnome-extension/extension.js"    "$EXT/extension.js"
+install -D -m 0644 "$HERE/gnome-extension/stylesheet.css"  "$EXT/stylesheet.css"
+install -D -m 0644 "$HERE/gnome-extension/icons/io.github.chargeguard-symbolic.svg" \
+  "$EXT/icons/io.github.chargeguard-symbolic.svg"
+
 install -D -m 0644 "$HERE/README.md" \
   "$STAGE/usr/share/doc/charge-guard/README.md"
 install -D -m 0644 "$HERE/COMPATIBILITY.md" \
   "$STAGE/usr/share/doc/charge-guard/COMPATIBILITY.md"
+install -D -m 0644 "$HERE/EXTENSION.md" \
+  "$STAGE/usr/share/doc/charge-guard/EXTENSION.md"
 
 SIZE=$(du -ks "$STAGE" | cut -f1)
 
@@ -34,6 +44,7 @@ Section: utils
 Priority: optional
 Architecture: all
 Depends: python3, python3-gi, gir1.2-gtk-4.0, gir1.2-adw-1, pkexec
+Recommends: gnome-shell (>= 45)
 Installed-Size: $SIZE
 Maintainer: Mohammad Hadi Arvin <mammad.arvin@gmail.com>
 Description: Battery charge control for Lenovo IdeaPad laptops
@@ -43,6 +54,9 @@ Description: Battery charge control for Lenovo IdeaPad laptops
  .
  The charge then stops near 60 percent, which lowers the wear on the
  cells. The battery is never force-discharged.
+ .
+ A GNOME Shell extension puts the same switch in the top bar. Each user
+ enables it once and logs in again; see EXTENSION.md.
 CONTROL
 
 cat > "$STAGE/DEBIAN/postinst" <<'POSTINST'

@@ -23,7 +23,7 @@ power from the adapter. A battery above that level is held, never drained.
 
 ## Install
 
-    sudo dpkg -i dist/charge-guard_1.0.0_all.deb
+    sudo dpkg -i dist/charge-guard_1.1.0_all.deb
 
 Or from this directory, without a package:
 
@@ -38,24 +38,20 @@ Both put the same files in the same places:
 | `/usr/share/polkit-1/actions/io.github.chargeguard.policy` | the authentication rule |
 | `/usr/share/applications/io.github.chargeguard.desktop` | menu entry |
 | `/usr/share/icons/hicolor/scalable/apps/io.github.chargeguard.svg` | icon |
+| `/usr/share/gnome-shell/extensions/charge-guard@io.github.chargeguard/` | top bar extension |
 
 Remove it with `sudo apt remove charge-guard`, or `sudo ./uninstall.sh`.
 
 ## Top bar extension
 
-A GNOME Shell extension puts the same switch in the top bar. It needs the
-helper, so install the app first.
+The install puts a GNOME Shell extension in place as well. It carries the
+same switch in the top bar, and its icon turns green while the mode is on.
 
-    ./gnome-extension/install.sh
+GNOME enables an extension per user and loads a new one only at login, so
+two short steps are left to you. [EXTENSION.md](EXTENSION.md) has them.
 
-On Wayland the shell loads a new extension only after you log out and back
-in. The installer enables it for you, so it appears by itself after the next
-login. Remove it with `./gnome-extension/uninstall.sh`.
-
-The panel icon turns green while the mode is on. Its menu holds the switch,
-the charge reading, and an item that opens the full app.
-
-Requires GNOME Shell 45 or newer, because the extension uses ESM imports.
+To install it for one user only, without sudo, use
+`./gnome-extension/install.sh` instead.
 
 ## Authentication
 
