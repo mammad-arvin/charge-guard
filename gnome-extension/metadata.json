@@ -1,0 +1,9 @@
+{
+  "uuid": "charge-guard@io.github.chargeguard",
+  "name": "Charge Guard",
+  "description": "Stop the battery charge from the top bar. Drives the Lenovo IdeaPad conservation mode through the Charge Guard helper.",
+  "shell-version": ["45", "46", "47", "48"],
+  "version": 1,
+  "version-name": "1.0.0",
+  "url": "https://github.com/"
+}

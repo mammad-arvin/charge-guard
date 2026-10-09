@@ -41,6 +41,22 @@ Both put the same files in the same places:
 
 Remove it with `sudo apt remove charge-guard`, or `sudo ./uninstall.sh`.
 
+## Top bar extension
+
+A GNOME Shell extension puts the same switch in the top bar. It needs the
+helper, so install the app first.
+
+    ./gnome-extension/install.sh
+
+On Wayland the shell loads a new extension only after you log out and back
+in. The installer enables it for you, so it appears by itself after the next
+login. Remove it with `./gnome-extension/uninstall.sh`.
+
+The panel icon turns green while the mode is on. Its menu holds the switch,
+the charge reading, and an item that opens the full app.
+
+Requires GNOME Shell 45 or newer, because the extension uses ESM imports.
+
 ## Authentication
 
 Every change asks for authentication (`auth_admin`). A fingerprint works,
